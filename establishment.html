@@ -18,9 +18,9 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <a href="/establishment.html">Try the establishment setup</a>
+        <a href="/">Try the geocode setup</a>
         <br />
-        <a href="/combo.html">Try the combo geocode/establishment/address setup</a>
+        <a href="/combo.html">Try the combo geocode/establishment setup</a>
         <br />
         <a href="/address.html">Try the address setup</a>
         <br />
@@ -88,7 +88,9 @@ function initAutocomplete() {
 	// location types.
 	autocomplete = new google.maps.places.Autocomplete(
 			/** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
-			{types: ['geocode']});
+			//{types: ['geocode']}
+			{types: ['establishment']}
+      );
 
 	// When the user selects an address from the dropdown, populate the address
 	// fields in the form.
@@ -133,6 +135,9 @@ function geolocate() {
 		});
 	}
 }
+
+// For venues - Autocomplete should not geocode, it should use businesses.  It can fall back to geocoding if no business results are returned
+// - Make sure ot pass address: true option to only return geocode results with an actual address
 			</script>
 			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBonRx04etw-mUvbPCrPejvxH9q2ZTUnK0&libraries=places&callback=initAutocomplete"
               async defer></script>
